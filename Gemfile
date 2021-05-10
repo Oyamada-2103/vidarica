@@ -66,3 +66,6 @@ gem 'dotenv-rails'
 group :production do
   gem 'mysql2'
 end
+
+# 以下、自分で追加
+gem 'devise'
