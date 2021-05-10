@@ -1,0 +1,20 @@
+<h1>投稿一覧</h1>
+<% @post_images.each do |post_image| %>
+  <div>
+    <!--投稿画像-->
+    <%= link_to post_image_path(post_image.id) do %>
+      <%= attachment_image_tag post_image, :image %>
+    <% end %>
+    <br>
+
+    <!--投稿ユーザー情報-->
+    <%= image_tag('no_img.jpg') %>
+    <%= post_image.user.user_name %>
+    <br/>
+    <p>説明<br>
+      <%= post_image.caption %>
+    </p>
+    <p>投稿日<%= post_image.created_at.strftime('%Y/%m/%d') %></p>
+
+  </div>
+<% end %>

@@ -68,4 +68,8 @@ group :production do
 end
 
 # 以下、自分で追加
+# ログイン機能
 gem 'devise'
+# 画像投稿
+gem "refile", require: "refile/rails", github: 'manfe/refile'
+gem "refile-mini_magick"

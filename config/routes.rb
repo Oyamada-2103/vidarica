@@ -1,10 +1,15 @@
 Rails.application.routes.draw do
+
+  root to: 'homes#top'
+
   devise_for :users
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
-  get 'static_pages/home'
-  # test
+  resources :post_images, only: [:new, :create, :index, :show, :destroy]
 
-  root to: 'homes#top'
+  get 'static_pages/home'
+  # test後で消す
+
+
 
 end
