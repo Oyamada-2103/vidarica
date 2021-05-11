@@ -5,16 +5,15 @@
   <%= attachment_image_tag @post_image, :image %>
   <br>
   <!--投稿ユーザー情報-->
-  <%= image_tag('no_img.jpg') %>
+  <%= attachment_image_tag @post_image.user, :image %>
   <%= @post_image.user.user_name %>
-  <br/>
-  <p>説明<br>
-    <%= @post_image.caption %>
-  </p>
-  <p>投稿日<%= @post_image.created_at %></p>
+  <br>
+  <p>説明<br><%= @post_image.caption %></p>
+  <p>投稿日:<%= @post_image.created_at %></p>
 
   <% if @post_image.user == current_user %>
     <%= link_to "削除", post_image_path(@post_image), method: :delete %>
+    <%= link_to "編集", edit_post_image_path %>
   <% end %>
 
 </div>

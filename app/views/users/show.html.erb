@@ -1,0 +1,41 @@
+<h1>マイページ</h1>
+<!--ユーザー情報-->
+<div class="row">
+  <div class="col">
+    投稿者画像
+    <%= attachment_image_tag(@user,:image, :fill, 100, 100, fallback: 'no_img.jpg') %>
+</div>
+  <div class="col">
+    ユーザー名
+    <%= @user.user_name %>
+    <br>
+    自己紹介
+    <%= @user.introduction %>
+  </div>
+</div>
+
+<div class="row">
+  <% if @user == current_user %>
+    <%= link_to "編集", edit_user_path(current_user) %>
+  <% end %>
+</div>
+<P>-----------ここまでユーザー情報-------------</P>
+<P>-----------ここから投稿一覧-------------</P>
+
+<!--ユーザー投稿一覧-->
+<div class="row">
+  <% @post_images.each do |post_image| %>
+    <div class="col-3">
+      <%= link_to post_image_path(post_image.id) do %>
+        <%= attachment_image_tag post_image, :image, :fill, 300, 300 %><br>
+      <% end %>
+      <%= post_image.caption %><br>
+      投稿日：<%= post_image.created_at %><br>
+      更新日：<%= post_image.updated_at %>
+      <% if @user == current_user%>
+        <%= link_to "編集", edit_post_image_path(post_image) %>
+        <%=  link_to "削除", post_image_path(post_image), method: :delete %>
+      <% end %>
+    </div>
+  <% end %>
+</div>

@@ -1,0 +1,10 @@
+<h1>編集</h1>
+<%= form_with model:@post_image, local: true do |f| %>
+
+  <h4>投稿内容</h4>
+  変更前画像<%= attachment_image_tag @post_image, :image %>
+  <%= f.attachment_field :image %>
+  <%= f.text_area :caption %>
+  <%= f.submit '保存' %>
+
+<% end %>
