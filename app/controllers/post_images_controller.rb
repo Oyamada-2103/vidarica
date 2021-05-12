@@ -12,11 +12,15 @@ class PostImagesController < ApplicationController
   end
 
   def index
-    @post_images = PostImage.all
+    # @post_images = PostImage.all
+    # ページ機能の追加
+    @post_images = PostImage.page(params[:page]).reverse_order
   end
 
   def show
     @post_image = PostImage.find(params[:id])
+
+    # コメント機能の実装
     @post_comment = PostComment.new
   end
 

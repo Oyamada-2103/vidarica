@@ -67,7 +67,7 @@ group :production do
   gem 'mysql2'
 end
 
-# 以下、自分で追加
+# 以下、追加
 # ログイン機能
 gem 'devise'
 # 画像投稿
@@ -76,3 +76,5 @@ gem "refile-mini_magick"
 # bootstrap
 gem 'bootstrap', '~> 4.5'
 gem 'jquery-rails'
+# ページ機能の実装
+gem 'kaminari','~> 1.2.1'
