@@ -19,7 +19,6 @@ class PostImagesController < ApplicationController
 
   def show
     @post_image = PostImage.find(params[:id])
-
     # コメント機能の実装
     @post_comment = PostComment.new
   end

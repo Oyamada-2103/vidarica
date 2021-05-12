@@ -10,7 +10,11 @@ Rails.application.routes.draw do
     resources :favorites, only: [:create, :destroy]
   end
 
-  resources :users, only: [:show, :edit, :update]
+  resources :users, only: [:show, :edit, :update, :followers, :follows] do
+    resource :relationships, only: [:create, :destroy]
+      get :follows, on: :member
+      get :followers, on: :member
+  end
 
   get 'static_pages/home'
   # test後で消す
