@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+
   root to: 'homes#top'
 
   devise_for :users
@@ -35,6 +36,7 @@ Rails.application.routes.draw do
     # resources :order_items, only: [:index, :create, :show, :update]
     resources :genres, only: [:index, :create, :edit, :update]
     resources :tags, only: [:index, :create, :edit, :update]
+    resources :users, only:[:index, :edit]
     get 'search' => 'searches#search', as: 'search'
   end
 
