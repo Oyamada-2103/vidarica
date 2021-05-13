@@ -16,7 +16,12 @@ Rails.application.routes.draw do
       get :follows, on: :member
       get :followers, on: :member
   end
-
+  
+  
+  #タグによって絞り込んだ投稿を表示するアクションへのルーティング
+  resources :tags do
+    get 'post_images', to: 'post_images#search'
+  end
 
 
   # 管理者用サイトのrouting

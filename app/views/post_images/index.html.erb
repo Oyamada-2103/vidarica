@@ -1,4 +1,14 @@
 <div class = "row">
+  <h3>タグリスト</h3>
+</div>
+
+<div class ="row">
+  <% @tag_list.each do |list| %>
+    <%= link_to list.tag_name, tag_post_images_path(tag_id: list.id) %>
+    <!--< %= "(#{list.post_images.count})"%>-->
+  <% end %>
+</div>
+<div class = "row">
   <h1>投稿一覧</h1>
 </div>
 
