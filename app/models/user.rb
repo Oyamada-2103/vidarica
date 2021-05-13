@@ -23,5 +23,4 @@ class User < ApplicationRecord
   end
   # フォロー先のuserのフォローされているユーザー（passive）の中に
   # 自分がいるかどうかを確認する
-
 end
