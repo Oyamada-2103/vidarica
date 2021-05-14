@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_05_13_052522) do
+ActiveRecord::Schema.define(version: 2021_05_13_231713) do
 
   create_table "admins", force: :cascade do |t|
     t.string "email"
@@ -46,16 +46,33 @@ ActiveRecord::Schema.define(version: 2021_05_13_052522) do
   end
 
   create_table "post_images", force: :cascade do |t|
-    t.integer "user_id"
     t.string "image_id"
     t.text "caption"
+    t.integer "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_post_images_on_user_id"
+  end
+
+  create_table "post_tags", force: :cascade do |t|
+    t.integer "post_image_id"
+    t.integer "tag_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["post_image_id"], name: "index_post_tags_on_post_image_id"
+    t.index ["tag_id"], name: "index_post_tags_on_tag_id"
   end
 
   create_table "relationships", force: :cascade do |t|
     t.integer "following_id"
     t.integer "follower_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "tag_maps", force: :cascade do |t|
+    t.integer "post_image_id"
+    t.integer "tag_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

@@ -34,7 +34,8 @@
           <td><%= tag.genre.name %></td>
           <td><%= tag.created_at %></td>
           <td><%= tag.updated_at %></td>
-          <td><%= link_to "編集", edit_admin_tag_path(tag) %>
+          <td><%= link_to "編集", edit_admin_tag_path(tag) %></td>
+          <td><%= link_to "削除", admin_tag_path(tag), method: :delete %></td>
         </tr>
       <% end %>
     </tbody>

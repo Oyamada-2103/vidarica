@@ -22,6 +22,12 @@ class Admin::TagsController < ApplicationController
     @tag.update(tag_params)
     redirect_to admin_tags_path
   end
+  
+  def destroy
+    @tag = Tag.find(params[:id])
+    @tag.delete
+    redirect_to admin_tags_path
+  end
 
   private
 
