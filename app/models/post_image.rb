@@ -4,9 +4,10 @@ class PostImage < ApplicationRecord
   has_many :post_comments, dependent: :destroy
   has_many :favorites, dependent: :destroy
 
+
   # tag機能の実装
-  has_many :post_tags, foreign_key: :post_image_id, dependent: :destroy
-  has_many :tags, through: :post_tags, foreign_key: :post_image_id, dependent: :destroy
+  has_many :post_tags, dependent: :destroy
+  has_many :tags, through: :post_tags
 
   def save_tag(sent_tags)
     current_tags = self.tags.pluck(:tag_name) unless self.tags.nil?

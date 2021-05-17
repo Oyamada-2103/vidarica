@@ -25,22 +25,20 @@ class PostImagesController < ApplicationController
 
     # @post_images = PostImage.all
     # ページ機能の追加
-    @post_images = PostImage.page(params[:page]).reverse_order
+    @post_images = PostImage.page(params[:page]).per(3)#reverse_order
   end
 
   def show
     @post_image = PostImage.find(params[:id])
-
     # コメント機能の実装
     @post_comment = PostComment.new
-
     # タグ機能の実装
     @post_image_tags = @post_image.tags
   end
 
   def destroy
     @post_image = PostImage.find(params[:id])
-    @post_image.delete
+    @post_image.destroy
     redirect_to post_images_path
   end
 
@@ -56,9 +54,10 @@ class PostImagesController < ApplicationController
 
 
   def search
-    @tag_list = Tag.all  #こっちの投稿一覧表示ページでも全てのタグを表示するために、タグを全取得
-    @tag = Tag.find(params[:tag_id])  #クリックしたタグを取得
-    @post_images = @tag.post_images.all           #クリックしたタグに紐付けられた投稿を全て表示
+    @tag_list = Tag.all
+    @tag = Tag.find(params[:tag_id])
+    # @post_images = @tag.post_images.all
+    @post_images = PostImage.page(params[:page]).reverse_order
   end
 
   private

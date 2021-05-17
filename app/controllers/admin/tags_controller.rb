@@ -4,6 +4,7 @@ class Admin::TagsController < ApplicationController
     @tag = Tag.new
     @tags = Tag.all
     @genres = Genre.all
+    # @tag_find = Tag.find(params[:id])
   end
 
   def create
@@ -20,6 +21,12 @@ class Admin::TagsController < ApplicationController
   def update
     @tag = Tag.find(params[:id])
     @tag.update(tag_params)
+    redirect_to admin_tags_path
+  end
+
+  def destroy
+    @tag = Tag.find(params[:id])
+    @tag.destroy
     redirect_to admin_tags_path
   end
 

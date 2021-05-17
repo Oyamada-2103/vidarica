@@ -1,3 +1,27 @@
 // Place all the styles related to the PostImages controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+// 投稿一覧の各投稿の表示設定ここから
+.card-header {
+  display: flex;
+  justify-content: space-between;
+}
+.u-image{
+  width: 30px;
+  height: 30px;
+  float: left;
+  margin-right: 10px;
+}
+.u-follow{
+  float: right;
+}
+.m-image{
+  width: 100%;
+height: 300px;
+}
+.card-text{
+  display: flex;
+  justify-content: space-between;
+}
+// ここまで

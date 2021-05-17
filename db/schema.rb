@@ -29,6 +29,8 @@ ActiveRecord::Schema.define(version: 2021_05_13_094649) do
     t.integer "post_image_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["post_image_id"], name: "index_favorites_on_post_image_id"
+    t.index ["user_id"], name: "index_favorites_on_user_id"
   end
 
   create_table "genres", force: :cascade do |t|
@@ -43,6 +45,8 @@ ActiveRecord::Schema.define(version: 2021_05_13_094649) do
     t.integer "post_image_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["post_image_id"], name: "index_post_comments_on_post_image_id"
+    t.index ["user_id"], name: "index_post_comments_on_user_id"
   end
 
   create_table "post_images", force: :cascade do |t|
@@ -75,6 +79,7 @@ ActiveRecord::Schema.define(version: 2021_05_13_094649) do
     t.integer "genre_id", default: 1
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["genre_id"], name: "index_tags_on_genre_id"
   end
 
   create_table "users", force: :cascade do |t|

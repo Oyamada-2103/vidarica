@@ -1,0 +1,4 @@
+<h2>タグに<%= strong= "#{@tag.tag_name}"%>を含む投稿一覧</h2>
+
+<!--インデックス部分をテンプレート化していれる-->
+<%= render partial: "post_images/index", locals: { post_images: @post_images } %>
