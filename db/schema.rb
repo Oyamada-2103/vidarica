@@ -39,6 +39,13 @@ ActiveRecord::Schema.define(version: 2021_05_13_094649) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "photos", force: :cascade do |t|
+    t.integer "post_image_id"
+    t.integer "image_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "post_comments", force: :cascade do |t|
     t.text "comment"
     t.integer "user_id"
@@ -50,7 +57,6 @@ ActiveRecord::Schema.define(version: 2021_05_13_094649) do
   end
 
   create_table "post_images", force: :cascade do |t|
-    t.string "image_id"
     t.text "caption"
     t.integer "user_id"
     t.datetime "created_at", null: false
