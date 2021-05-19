@@ -4,6 +4,9 @@ class PostImage < ApplicationRecord
   has_many :post_comments, dependent: :destroy
   has_many :favorites, dependent: :destroy
 
+  # 複数枚画像投稿
+  has_many :pictures, dependent: :destroy
+  accepts_attachments_for :pictures, attachment: :image
 
   # tag機能の実装
   has_many :post_tags, dependent: :destroy
