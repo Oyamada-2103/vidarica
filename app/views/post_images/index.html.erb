@@ -3,7 +3,7 @@
 </div>
 <div class ="row">
   <% @tag_list.each do |list| %>
-  <% if list.genre_id = 2 %>
+  <% if list.genre.id == 2 %>
     <%= link_to list.tag_name, tag_post_images_path(tag_id: list.id) %>
     <%= "(#{list.post_tags.count})"%>
     <%= "　"%>

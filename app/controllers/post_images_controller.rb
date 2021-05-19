@@ -22,10 +22,9 @@ class PostImagesController < ApplicationController
   def index
     # タグ機能の実装
     @tag_list = Tag.all
-
     # @post_images = PostImage.all
     # ページ機能の追加
-    @post_images = PostImage.page(params[:page]).per(3)#reverse_order
+    @post_images = PostImage.page(params[:page]).per(3)
   end
 
   def show
