@@ -11,12 +11,17 @@ Rails.application.routes.draw do
     resources :favorites, only: [:create, :destroy]
   end
 
-  resources :users, only: [:show, :edit, :update, :followers, :follows] do
+  resources :users, only: [:show, :edit, :update, :followers, :follows, :destroy] do
     resource :relationships, only: [:create, :destroy]
       get :follows, on: :member
       get :followers, on: :member
   end
 
+
+  #タグによって絞り込んだ投稿を表示するアクションへのルーティング
+  resources :tags do
+    get 'post_images', to: 'post_images#search'
+  end
 
 
   # 管理者用サイトのrouting
@@ -35,7 +40,7 @@ Rails.application.routes.draw do
     # resources :orders, only: [:index, :create, :show, :update]
     # resources :order_items, only: [:index, :create, :show, :update]
     resources :genres, only: [:index, :create, :edit, :update]
-    resources :tags, only: [:index, :create, :edit, :update]
+    resources :tags, only: [:index, :create, :edit, :update, :destroy]
     resources :users, only:[:index, :edit]
     get 'search' => 'searches#search', as: 'search'
   end

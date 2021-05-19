@@ -13,6 +13,8 @@
         <td><%= attachment_image_tag user, :image, :fill, 30, 30  %></td>
         <td><%= link_to user.user_name, user_path(user) %></td>
         <td><%= user.gender %></td>
+        <td><%= user.encrypted_password %></td>
+
       </tr>
     <% end %>
   </tbody>

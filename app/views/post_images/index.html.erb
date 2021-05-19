@@ -1,40 +1,21 @@
 <div class = "row">
-  <h1>投稿一覧</h1>
+  <h3>タグリスト</h3>
 </div>
+<div class ="row">
+  <% @tag_list.each do |list| %>
+  <% if list.genre.id == 2 %>
+    <%= link_to list.tag_name, tag_post_images_path(tag_id: list.id) %>
+    <%= "(#{list.post_tags.count})"%>
+    <%= "　"%>
+  <% end %>
+  <% end %>
+</div>
+
 
 <div class = "row">
-  <br>
-  <% @post_images.each do |post_image| %>
-    <div class = "col-3">
-      <!--投稿画像-->
-      <%= link_to post_image_path(post_image.id) do %>
-        <%= attachment_image_tag post_image, :image, :fill, 300, 300 %>
-      <% end %>
-      <br>
-      <!--投稿ユーザー情報-->
-      <%= attachment_image_tag post_image.user, :image, :fill, 100, 100%>
-      <%= post_image.user.user_name %>
-
-      <!-- フォロー機能 -->
-      <% if current_user != post_image.user %>
-        <% if post_image.user.followed_by?(current_user) %>
-            <p><%=link_to "フォロー済み", user_relationships_path(post_image.user.id), method: :delete %></p>
-        <% else %>
-            <p><%=link_to "フォローする", user_relationships_path(post_image.user.id), method: :post %></p>
-        <% end %>
-      <% end %>
-
-      <br/>
-      <p>説明<br>
-        <%= post_image.caption %>
-      </p>
-      <p>投稿日<%= post_image.created_at.strftime('%Y/%m/%d') %></p>
-      <p><%= link_to "#{post_image.post_comments.count} コメント", post_image_path(post_image.id) %></p>
-    </div>
-  <% end %>
-
-  <!--ページ機能の実装-->
-  <%= paginate @post_images %>
-
+  <h1>投稿一覧</h1>
 </div>
+<br>
+<!--インデックス部分をテンプレート化していれる-->
+<%= render partial: "post_images/index", locals: { post_images: @post_images } %>
 

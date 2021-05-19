@@ -10,7 +10,7 @@
   </li>
   <li class="nav-item">
     <%= link_to user_path(current_user), {class: "nav-link"} do %>
-      <%= attachment_image_tag current_user, :image, :fill, 30, 30 %>マイページ
+      <%= attachment_image_tag current_user, :image, fallback: 'no_img.jpg', class:"header-u-image" %>マイページ
     <% end %>
   </li>
   <li class="nav-item">
