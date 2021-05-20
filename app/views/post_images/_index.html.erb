@@ -6,7 +6,7 @@
           <div class = "card-header">
             <div class = "u-info">
               <%= link_to user_path(post_image.user.id) do %>
-                <%= attachment_image_tag post_image.user, :image, class:"u-image" %>
+                <%= attachment_image_tag post_image.user, :image, fallback: 'no_img.jpg', class:"header-u-image" %>
                 <%= post_image.user.user_name %>
               <% end %>
             </div>
