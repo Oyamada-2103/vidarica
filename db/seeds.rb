@@ -10,5 +10,6 @@
 Admin.create!(email: 'admin@test.com', password: 'testtest',)
 
 User.create!(email: 'user@test.com', password: 'testtest', account_name: 'testuser',user_name: 'テストユーザー',gender: '1',birth_year: '1990')
-
 Genre.create!(id: '1', name: '未分類')
+Genre.create!(id: '2', name: 'scene')
+Tag.create!(id: '1', tag_name: 'キッチン', genre_id: '2')

@@ -21,7 +21,7 @@
         </tr>
 
         <tr class="field">
-          <td><%= f.label :gender %></td>
+          <td><%= f.label :gender %> (非公開)</td>
           <td>
             <%= f.label :gender, :man %>
             <%= f.radio_button :gender, 1 %>
@@ -32,12 +32,12 @@
         </tr>
 
         <tr class="field">
-          <td><%=f.label :birth_year %></td>
+          <td><%=f.label :birth_year %> (非公開)</td>
           <td><%= f.number_field :birth_year, min: 1930, max: (Time.now.year - 5), maxlength: 4 %></td>
         </tr>
 
         <tr class="field">
-          <td><%= f.label :email %></td>
+          <td><%= f.label :email %> (非公開)</td>
           <td><%= f.email_field :email, autofocus: true, autocomplete: "email" %></td>
         </tr>
 
