@@ -8,8 +8,10 @@
         <%= @post_image.user.user_name %>
       </div>
     </div>
-    <!--投稿画像-->
-    <%= attachment_image_tag @post_image, :image %>
+    <!--投稿画像の表示-->
+    <% @post_image.pictures.each do |image| %>
+      <%= attachment_image_tag image, :image, class: "default_image" %>
+    <% end %>
     <div class="card-body">
       <p><%= @post_image.caption %></p>
       投稿日:<%= @post_image.created_at %>
