@@ -3,12 +3,27 @@
     <% post_images.each do |post_image| %>
       <div class = "col-lg-4">
         <div class = "card my-3">
-          <div>
+
+          <div class ="z">
+          <div class ="a">
+            <!--1枚目のみ表示-->
+            <!--< % post_image.pictures.first(1).each do |image| %>-->
+            <% post_image.pictures.each do |image| %>
             <%= link_to post_image_path(post_image.id) do %>
-              <!--< %= attachment_image_tag post_image, :image, :fill, 328, 280 %>-->
-               <%= attachment_image_tag post_image, :image, class:"m-image" %>
+                <!--< %= attachment_image_tag post_image, :image, :fill, 328, 280 %>-->
+                <div class= "b"><%= attachment_image_tag image, :image, class:"m-image" %></div>
+              <% end %>
             <% end %>
           </div>
+          </div>
+
+          <!--<div>-->
+          <!--  < %= link_to post_image_path(post_image.id) do %>-->
+              <!--< %= attachment_image_tag post_image, :image, :fill, 328, 280 %>-->
+          <!--     < %= attachment_image_tag post_image, :image, class:"m-image" %>-->
+          <!--  < % end %>-->
+          <!--</div>-->
+
           <div class ="card-body">
             <%= post_image.caption.truncate(20) %>
             <%= link_to " 全て表示する", post_image_path(post_image.id) %>

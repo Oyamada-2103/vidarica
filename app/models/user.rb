@@ -7,7 +7,20 @@ class User < ApplicationRecord
   has_many :post_images, dependent: :destroy
   has_many :post_comments, dependent: :destroy
   has_many :favorites, dependent: :destroy
+  
   attachment :image
+  accepts_attachments_for :pictures, attachment: :image
+
+  validates :user_name, length: {minimum: 2, maximum: 8}, presence: true
+  validates :gender, presence: true
+  validates :birth_year, presence: true
+  validates :introduction, length: { maximum: 200}
+  
+  # passwordとaccount_nameについては半角英数のみ対応
+  VALID_ACCOUNT_NAME = /\A[a-z0-9]+\z/i
+  validates :account_name, format: { with: VALID_ACCOUNT_NAME }, length: {minimum: 2, maximum: 8}, presence: true
+  VALID_PASSWORD_REGEX = /\A[a-z0-9]+\z/i
+  validates :password, format: { with: VALID_PASSWORD_REGEX }
 
 # follow機能の実装：フォローしているuserの中間テーブルをacteive~、フォローされている方をpassive~とする
   #followする側のユーザー視点

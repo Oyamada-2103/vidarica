@@ -45,7 +45,7 @@
       <!--コメント機能の実装-->
       <div class ="new-comment">
         <%= form_with(model:[@post_image, @post_comment], local: true) do |f| %>
-        <%= f.text_area :comment, rows:'3',placeholder: "コメントをここに"%>
+        <%= f.text_area :comment, rows:'3',placeholder: "コメントをここに(200文字以内)"%>
         <%= f.submit "コメントする" %>
         <% end %>
       </div>

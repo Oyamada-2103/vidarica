@@ -16,7 +16,7 @@ class PostImagesController < ApplicationController
       @post_image.save_tag(tag_list)
       redirect_to post_images_path
     else
-      redirect_to post_image_path
+      render :new
     end
   end
 
@@ -25,7 +25,7 @@ class PostImagesController < ApplicationController
     @tag_list = Tag.all
     # @post_images = PostImage.all
     # ページ機能の追加
-    @post_images = PostImage.page(params[:page]).per(3)
+    @post_images = PostImage.order(" id DESC ").page(params[:page]).per(3)
   end
 
   def show
@@ -38,8 +38,11 @@ class PostImagesController < ApplicationController
 
   def destroy
     @post_image = PostImage.find(params[:id])
-    @post_image.destroy
-    redirect_to post_images_path
+    if @post_image.destroy
+      redirect_to post_images_path
+    else
+      render :show
+    end
   end
 
   def edit
@@ -48,8 +51,11 @@ class PostImagesController < ApplicationController
 
   def update
     post_image = PostImage.find(params[:id])
-    post_image.update(post_image_params)
-    redirect_to post_image_path(post_image)
+    if post_image.update(post_image_params)
+      redirect_to post_image_path(post_image)
+    else
+      render :edit
+    end
   end
 
 

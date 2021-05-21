@@ -12,6 +12,10 @@ class PostImage < ApplicationRecord
   has_many :post_tags, dependent: :destroy
   has_many :tags, through: :post_tags
 
+  # attachment :image
+
+  validates :caption, presence: true
+
   def save_tag(sent_tags)
     current_tags = self.tags.pluck(:tag_name) unless self.tags.nil?
     old_tags = current_tags - sent_tags
@@ -26,10 +30,6 @@ class PostImage < ApplicationRecord
       self.tags << new_post_image_tag
     end
   end
-
-
-
-  attachment :image
 
   def favorited_by?(user)
     favorites.where(user_id: user.id).exists?

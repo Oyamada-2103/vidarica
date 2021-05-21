@@ -14,31 +14,8 @@
  *= require_self
  */
 
-
-// topのフォント
-@font-face {
-  font-family: '851';
-  src: asset_url('/assets/851.ttf') format("truetype");
-  font-weight: normal;
-  font-style: normal;
-}
-
-//カリキュラム１章：画像の表示（この記述で合ってるのか疑問）→一旦、非表示に
-.main-visual {
-  background-image: image-url("home.jpg");
-  background-position:center center;
-  background-size: cover;
-  width: 100%;
-  height: 700px;
-}
-
 @import "bootstrap";
 
 // slick(スライダー機能)実装
-@import "slick-theme"; 
+@import "slick-theme";
 @import "slick";
-
-.header-u-image{
-  width: 30px;
-  height: 30px;
-}

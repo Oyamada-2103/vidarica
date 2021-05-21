@@ -23,6 +23,9 @@
 /*global $*/
 
 $(function() {
-  $('.slider').slick();
+    $('.a').slick({
+        dots: true,
+    });
 });
+
 
