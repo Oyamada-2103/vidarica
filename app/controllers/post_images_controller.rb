@@ -7,8 +7,6 @@ class PostImagesController < ApplicationController
 
   def create
     @post_image = PostImage.new(post_image_params)
-    # 上でだめなら下で
-    # @post_image = current_user.post_images.new(post_params)
     tag_list = params[:post_image][:tag_name].split('・')
     @post_image.user_id = current_user.id
 
@@ -25,7 +23,7 @@ class PostImagesController < ApplicationController
     @tag_list = Tag.all
     # @post_images = PostImage.all
     # ページ機能の追加
-    @post_images = PostImage.order(" id DESC ").page(params[:page]).per(3)
+    @post_images = PostImage.order(" id DESC ").page(params[:page]).per(9)
   end
 
   def show
@@ -47,11 +45,14 @@ class PostImagesController < ApplicationController
 
   def edit
     @post_image = PostImage.find(params[:id])
+    @post_image_tags = @post_image.tags
   end
 
   def update
     post_image = PostImage.find(params[:id])
+    tag_list = params[:post_image][:tag_name].split('・')
     if post_image.update(post_image_params)
+      post_image.save_tag(tag_list)
       redirect_to post_image_path(post_image)
     else
       render :edit

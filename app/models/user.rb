@@ -9,7 +9,7 @@ class User < ApplicationRecord
   has_many :favorites, dependent: :destroy
   
   attachment :image
-  accepts_attachments_for :pictures, attachment: :image
+  # accepts_attachments_for :pictures, attachment: :image
 
   validates :user_name, length: {minimum: 2, maximum: 8}, presence: true
   validates :gender, presence: true

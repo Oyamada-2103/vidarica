@@ -4,6 +4,6 @@ class PostComment < ApplicationRecord
   belongs_to :post_image
 
 
-validates :name, length: {minimum: 1, maximum: 200}, presence: true
+validates :comment, length: {minimum: 1, maximum: 200}, presence: true
 
 end

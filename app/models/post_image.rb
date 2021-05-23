@@ -14,7 +14,7 @@ class PostImage < ApplicationRecord
 
   # attachment :image
 
-  validates :caption, presence: true
+  validates :caption, length: { maximum: 500}, presence: true
 
   def save_tag(sent_tags)
     current_tags = self.tags.pluck(:tag_name) unless self.tags.nil?

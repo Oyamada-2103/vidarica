@@ -23,7 +23,7 @@
 /*global $*/
 
 $(function() {
-    $('.a').slick({
+    $('.slick-pic').slick({
         dots: true,
     });
 });

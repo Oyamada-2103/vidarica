@@ -1,12 +1,12 @@
 <h1>マイページ</h1>
 <!--ユーザー情報-->
 <div class="row">
-  <div class="col">
-    投稿者画像
-    <%= attachment_image_tag(@user,:image, :fill, 100, 100, fallback: 'no_img.jpg') %>
-</div>
-  <div class="col">
-    ユーザー名
+  <div class="col-lg-4">
+    <!--投稿者画像-->
+    <%= attachment_image_tag(@user,:image, :fill, 300, 300, fallback: 'no_img.jpg') %>
+  </div>
+  <div class="col-lg-6">
+    ユーザー名:
     <%= @user.user_name %>
     <br>
     自己紹介

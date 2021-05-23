@@ -1,10 +1,21 @@
-<h1>Admin::Genres#edit</h1>
-<p>Find me in app/views/admin/genres/edit.html.erb</p>
-
-<%= form_with model:@genre,local:true, url: admin_genre_path do |f| %>
-  <div class='create-foem'>
-    <%= f.label :ジャンル名 %>
-    <%= f.text_field :name %>
-    <%= f.submit '変更を保存' , class: 'btn btn-success' %>
+<div class ="row">
+  <div class = "col-xl offset-xl-2">
+    <h3>ジャンル名編集</h3>
   </div>
-<% end %>
+</div>
+<div class ="row">
+  <div class = "col-xl-6 offset-xl-3">
+    <table class="table table-borderless">
+      <%= form_with model:@genre,local:true, url: admin_genre_path do |f| %>
+        <tr class="field">
+          <td><%= f.label :ジャンル名 %></td>
+          <td><%= f.text_field :name %></td>
+        </tr>
+        <tr class="field">
+          <td></td>
+          <td><%= f.submit '保存', class: 'btn btn-success' %></td>
+        </tr>
+      <% end %>
+    </table>
+  </div>
+</div>
