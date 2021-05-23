@@ -11,11 +11,12 @@ Rails.application.routes.draw do
     resources :favorites, only: [:create, :destroy]
   end
 
-  resources :users, only: [:show, :edit, :update, :followers, :follows, :destroy] do
+  resources :users, only: [:show, :edit, :update, :followers, :follows, :destroy, :favorite] do
     resource :relationships, only: [:create, :destroy]
       get :follows, on: :member
       get :followers, on: :member
   end
+  # get "users/:id/likes" => "users#likes"
 
 
   #タグによって絞り込んだ投稿を表示するアクションへのルーティング

@@ -1,12 +1,29 @@
-<h1>投稿フォーム</h1>
-<%= form_with model: @post_image, local:true do |f| %>
-  <h4>投稿画像</h4>
-  <!--< %= f.attachment_field :image %>-->
-  <%= f.attachment_field :pictures_images, multiple: true %>
-  <h4>投稿コメント</h4>
-  <%= f.text_area :caption %>
-  <h4>タグ（・を入力することで複数のタグを付けることができます。）</h4>
-  <%= f.text_field :tag_name, placeholder: "キッチン・収納・スッキリ" %>
 
-  <%= f.submit '投稿' %>
-<% end %>
+<div class ="row">
+  <div class = "col-xl-6 offset-xl-3">
+    <table class="table table-borderless">
+      <%= form_with model: @post_image, local:true do |f| %>
+        <tr class="field">
+          <td><%= f.label :投稿画像 %></td>
+          <td><%= f.attachment_field :pictures_images, multiple: true %></td>
+        </tr>
+        <tr class="field">
+          <td><%= f.label :コメント %></td>
+          <td><%= f.text_area :caption, size: "50x10" %></td>
+        </tr>
+        <tr class="field">
+          <td><%= f.label :タグ %></td>
+          <td><%= f.text_field :tag_name, placeholder: "キッチン・収納・スッキリ",size: "50x1"  %></td>
+        </tr>
+        <tr class="field">
+          <td></td>
+          <td>(・を入力することで複数のタグを付けることができます）</td>
+        </tr>
+        <tr class="field">
+          <td></td>
+          <td><%= f.submit '投稿' %></td>
+        </tr>
+      <% end %>
+    </table>
+  </div>
+</div>

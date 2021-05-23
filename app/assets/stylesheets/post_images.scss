@@ -2,30 +2,64 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-// 投稿一覧の各投稿の表示設定ここから
+// slickのスライドアイコン
+.slick-next {
+  right: 10px !important;
+  z-index: 100;
+}
+.slick-prev {
+  left: 10px !important;
+z-index: 100;
+}
+
+// 投稿一覧についての設定
+
+.card my-3{
+  width: 100%;
+}
+
+// カードヘッダー部分
 .card-header {
   display: flex;
   justify-content: space-between;
 }
-
-.u-image{
+.header-u-image{
   width: 30px;
   height: 30px;
   float: left;
   margin-right: 10px;
 }
-
 .u-follow{
   float: right;
 }
 
-.m-image{
+// カード画像slick部分
+.slick-pic{
   width: 100%;
-height: 300px;
+}
+.slick-slide img{
+  text-align:center;
+  width: 100%;
+  // max-width:270px;
+  // height:40vh;
+  height: auto;
+  max-height:40vh
+  // minimum-height:38vh
 }
 
+// カード説明部分
 .card-text{
   display: flex;
   justify-content: space-between;
 }
 // ここまで
+
+// .u-image{
+//   width: 30px;
+//   height: 30px;
+  // float: left;
+  // margin-right: 10px;
+// }
+// .z{
+  // width: 100px;
+// }
