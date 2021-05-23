@@ -1,58 +1,68 @@
 <h1>投稿詳細</h1>
 
-<div>
-  <!--投稿画像-->
-  <%= attachment_image_tag @post_image, :image %>
-  <br>
-  <!--投稿ユーザー情報-->
-  <%= attachment_image_tag @post_image.user, :image %>
-  <%= @post_image.user.user_name %>
-  <br>
-  <p>説明<br><%= @post_image.caption %></p>
-  <p>投稿日:<%= @post_image.created_at %></p>
-
-  <% if @post_image.user == current_user %>
-    <%= link_to "削除", post_image_path(@post_image), method: :delete %>
-    <%= link_to "編集", edit_post_image_path %>
-  <% end %>
-</div>
-
-<div class = "comments">
-  <p>コメント件数：<%= @post_image.post_comments.count %></p>
-  <% @post_image.post_comments.each do |post_comment| %>
-    <%= attachment_image_tag post_comment.user, :image, :fill, 100, 100 %>
-    <%= post_comment.user.user_name %>
-    <%= post_comment.comment %><%= post_comment.created_at.strftime('%Y/%m/%d') %>
-    <% if post_comment.user == current_user %>
-      <div class="comment-delete">
-        <%= link_to "削除", post_image_post_comment_path(post_comment.post_image, post_comment), method: :delete %>
+<div class = "row">
+  <div class="card">
+    <div class="card-header">
+      <div class = "u-info">
+        <%= attachment_image_tag @post_image.user, :image, :fill, 30, 30 %>
+        <%= @post_image.user.user_name %>
       </div>
+    </div>
+    <!--投稿画像の表示-->
+    <% @post_image.pictures.each do |image| %>
+      <%= attachment_image_tag image, :image, class: "default_image" %>
     <% end %>
-  <% end %>
-</div>
-
-<!--いいね機能の実装-->
-<div>
-  <% if @post_image.favorited_by?(current_user) %>
-    <p>
-      <%= link_to post_image_favorite_path(@post_image), method: :delete do %>
-        ♥<%= @post_image.favorites.count %>Like
+    <div class="card-body">
+      <p><%= @post_image.caption %></p>
+      投稿日:<%= @post_image.created_at %>
+      <% if @post_image.user == current_user %>
+        <%= link_to "削除", post_image_path(@post_image), method: :delete %>
+        <%= link_to "編集", edit_post_image_path %>
       <% end %>
-    </p>
-  <% else %>
-    <p>
-      <%= link_to post_image_favorites_path(@post_image), method: :post do %>
-        ♡<%= @post_image.favorites.count %>Like
-      <% end %>
-    </p>
-  <% end %>
-</div>
+    <!--タグ機能-->
+    <p>tag:</p>
+    <% @post_image_tags.each do |tag|%>
+      <%= link_to tag.tag_name, tag_post_images_path(tag_id: tag.id) %>
+      <%= "(#{tag.post_images.count})" %>
+    <% end %>
+    <!--いいね機能の実装-->
+      <div>
+        <% if @post_image.favorited_by?(current_user) %>
+          <p>
+            <%= link_to post_image_favorite_path(@post_image), method: :delete do %>
+              ♥<%= @post_image.favorites.count %>Like
+            <% end %>
+          </p>
+        <% else %>
+          <p>
+            <%= link_to post_image_favorites_path(@post_image), method: :post do %>
+              ♡<%= @post_image.favorites.count %>Like
+            <% end %>
+          </p>
+        <% end %>
+      </div>
 
-<!--コメント機能の実装-->
-<div class ="new-comment">
-  <%= form_with(model:[@post_image, @post_comment], local: true) do |f| %>
-  <%= f.text_area :comment, rows:'3',placeholder: "コメントをここに"%>
-  <%= f.submit "コメントする" %>
-  <% end %>
+      <!--コメント機能の実装-->
+      <div class ="new-comment">
+        <%= form_with(model:[@post_image, @post_comment], local: true) do |f| %>
+        <%= f.text_area :comment, rows:'3',placeholder: "コメントをここに(200文字以内)"%>
+        <%= f.submit "コメントする" %>
+        <% end %>
+      </div>
+      <!--コメント一覧-->
+      <div class = "comments">
+        <p>コメント件数：<%= @post_image.post_comments.count %></p>
+        <% @post_image.post_comments.each do |post_comment| %>
+          <%= attachment_image_tag post_comment.user, :image, :fill, 30, 30 %>
+          <%= post_comment.user.user_name %>
+          <%= post_comment.comment %><%= post_comment.created_at.strftime('%Y/%m/%d') %>
+          <% if post_comment.user == current_user %>
+            <div class="comment-delete">
+              <%= link_to "削除", post_image_post_comment_path(post_comment.post_image, post_comment), method: :delete %>
+            </div>
+          <% end %>
+        <% end %>
+      </div>
+    </div>
+  </div>
 </div>
-

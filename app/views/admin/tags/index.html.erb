@@ -1,0 +1,48 @@
+<div class ="row">
+  <div class = "col-xl offset-xl-1">
+    <h3>tag登録</h3>
+  </div>
+</div>
+<div class = "row">
+  <div class = "col-xl-6 offset-xl-3">
+    <%= form_with model:@tag,local:true, url: admin_tags_path do |f| %>
+      <%= f.label :タグ名,class: "control-label" %>
+        <%= f.text_field :tag_name %>
+        <%= f.label :ジャンル,class: "control-label" %>
+      <%= f.collection_select(:genre_id, @genres, :id, :name) %>
+      <%= f.submit '登録', class: 'btn btn-secondary' %>
+    <% end %>
+  </div>
+</div>
+
+<div class ="row">
+  <h3>tag一覧</h3>
+</div>
+<div class = "row">
+    <table class="table table-borderless">
+      <thead>
+        <th>id</th>
+        <th>tag名</th>
+        <th>genre名</th>
+        <th>投稿数</th>
+        <th></th>
+        <th></th>
+        <th>登録日</th>
+        <th>更新日</th>
+      </thead>
+      <tbody>
+        <% @tags.each do |tag| %>
+          <tr>
+            <td><%= tag.id %></td>
+            <td><%= tag.tag_name %></td>
+            <td><%= tag.genre.name %></td>
+            <td><%= tag.post_images.count %></td>
+            <td><%= link_to "編集", edit_admin_tag_path(tag) , class: 'btn btn-success' %>
+            <td><%= link_to "削除",admin_tag_path(tag), method: :delete , class: 'btn btn-danger'%></td>
+            <td><%= tag.created_at %></td>
+            <td><%= tag.updated_at %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+</div>

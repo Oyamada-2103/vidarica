@@ -6,7 +6,13 @@
     <%= csp_meta_tag %>
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <!--slick(スライダー機能)実装-->
+    <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
+    <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css"/>
+
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <!--slick(スライダー機能)実装-->
+    <!--<script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>-->
   </head>
 
   <body>
@@ -17,16 +23,24 @@
         </button>
         <div class="navbar-collapse collapse" id="navbar10">
           <ul class="navbar-nav nav-fill w-100">
-            <!--ヘッダー内容-->
+            <!--ヘッダー部分-->
             <%= render partial:'layouts/header' %>
-            <!--ヘッダー内容ここまで-->
           </ul>
         </div>
       </div>
     </nav>
-
+    
     <div class = "container">
       <%= yield %>
     </div>
+
+    <div class="footer">
+      <div class="container">
+        <div class ="row">
+          <%= link_to "© Taku", new_admin_session_path, {class: "nav-link"} %>
+        </div>
+      </div>
+    </div>
+
   </body>
 </html>

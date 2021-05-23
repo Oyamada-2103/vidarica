@@ -18,5 +18,14 @@
 
 //= require rails-ujs
 //= require activestorage
-//= require turbolinks
+
 //= require_tree .
+/*global $*/
+
+$(function() {
+    $('.slick-pic').slick({
+        dots: true,
+    });
+});
+
+

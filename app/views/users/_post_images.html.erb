@@ -1,0 +1,35 @@
+<div class = "row">
+  <!--<div class = "card-deck">-->
+    <% post_images.each do |post_image| %>
+      <div class = "col-lg-4">
+        <div class = "card my-3">
+
+          <div class ="slick-pic">
+            <% post_image.pictures.each do |image| %>
+            <%= link_to post_image_path(post_image.id) do %>
+                <div class= "b"><%= attachment_image_tag image, :image, class:"m-image" %></div>
+              <% end %>
+            <% end %>
+          </div>
+          <div class ="card-body">
+            <%= post_image.caption.truncate(15) %>
+            <%= link_to "全て表示する", post_image_path(post_image.id) %>
+            <div>
+              投稿日：<%= post_image.created_at.strftime('%Y/%m/%d') %><br>
+              更新日：<%= post_image.updated_at %><br>
+              <%= link_to "#{post_image.post_comments.count} コメント", post_image_path(post_image.id) %>
+               <% if @user == current_user%>
+                <%= link_to "編集", edit_post_image_path(post_image) %>
+                <%=  link_to "削除", post_image_path(post_image), method: :delete %>
+              <% end %>
+            </div>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  <!--</div>-->
+  <!--ページ機能の実装-->
+</div>
+<div class="row">
+  <%= paginate post_images %>
+</div>

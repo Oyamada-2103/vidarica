@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
-    @post_images = @user.post_images
+    @post_images = @user.post_images.order(" id DESC ").page(params[:page]).per(9)
   end
 
   def edit
@@ -10,8 +10,20 @@ class UsersController < ApplicationController
 
   def update
     user = User.find(params[:id])
-    user.update(user_params)
-    redirect_to user_path(user.id)
+    if user.update(user_params)
+      redirect_to user_path(user.id)
+    else
+      render :edit
+    end
+  end
+
+  def destroy
+    user = User.find(params[:id])
+    if user.destroy
+      redirect_to post_images_path
+    else
+      render :show
+    end
   end
 
   def follows

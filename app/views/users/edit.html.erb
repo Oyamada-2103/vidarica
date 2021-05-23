@@ -1,11 +1,29 @@
-<h1>会員情報編集</h1>
-
-<%= form_with model:@user, local: true do |f| %>
-
-変更前画像<% attachment_image_tag @user, :image %>
-<%= f.attachment_field :image %>
-<%= f.text_field :user_name %>
-<%= f.text_area :introduction %>
-<%= f.submit '保存' %>
-
-<% end %>
+<div class ="row">
+  <div class = "col-xl offset-xl-2">
+    <h3>アカウント編集</h3>
+  </div>
+</div>
+<div class ="row">
+  <div class = "col-xl-6 offset-xl-3">
+    <table class="table table-borderless">
+     <%= form_with model:@user, local: true do |f| %>
+        <tr class="field">
+          <td><%= f.label :ユーザーアイコン %></td>
+          <td><%= f.attachment_field :image %></td>
+        </tr>
+        <tr class="field">
+          <td><%= f.label :User_name %></td>
+          <td><%= f.text_field :user_name %></td>
+        </tr>
+        <tr class="field">
+          <td><%= f.label :Introduction %></td>
+          <td><%= f.text_area :introduction, size: "40x5"  %></td>
+        </tr>
+        <tr class="field">
+          <td></td>
+          <td><%= f.submit '保存' %></td>
+        </tr>
+      <% end %>
+    </table>
+  </div>
+</div>

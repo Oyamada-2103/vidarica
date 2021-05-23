@@ -13,9 +13,15 @@
  *= require_tree .
  *= require_self
  */
- 
-//カリキュラム１章：画像の表示（この記述で合ってるのか疑問）→一旦、非表示に
- // body {
- //  background-image: image-url("hoge.jpg");}
- 
+
 @import "bootstrap";
+
+// slick(スライダー機能)実装
+@import "slick-theme";
+@import "slick";
+
+.header-image{
+  width: 30px;
+  height: 30px;
+  margin-right: 10px;
+}
