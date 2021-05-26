@@ -4,12 +4,12 @@
 
 
 // topのフォント
-@font-face {
-  font-family: '851';
-  src: asset_url('/assets/851.ttf') format("truetype");
-  font-weight: normal;
-  font-style: normal;
-}
+// @font-face {
+//   font-family: '851';
+//   src: asset_url('/assets/851.ttf') format("truetype");
+//   font-weight: normal;
+//   font-style: normal;
+// }
 
 //
 .main-visual {
@@ -20,13 +20,13 @@
   height: 700px;
 }
 
-.text-center{
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  -webkit-transform: translateY(-50%) translateX(-50%);
-  transform: translateY(-50%) translateX(-50%);
-  font-family: '851';
-  font-size: 42px
-  // text-align:center;
-}
+// .text-center{
+//   position: absolute;
+//   top: 50%;
+//   left: 50%;
+//   -webkit-transform: translateY(-50%) translateX(-50%);
+//   transform: translateY(-50%) translateX(-50%);
+//   font-family: '851';
+//   font-size: 42px
+
+// }

@@ -9,12 +9,12 @@
 }
 .slick-prev {
   left: 10px !important;
-z-index: 100;
+  z-index: 100;
 }
 
 // 投稿一覧についての設定
 
-.card my-3{
+.card{
   width: 100%;
 }
 
@@ -26,7 +26,7 @@ z-index: 100;
 .header-u-image{
   width: 30px;
   height: 30px;
-  float: left;
+  // float: left;
   margin-right: 10px;
 }
 .u-follow{
@@ -42,17 +42,38 @@ z-index: 100;
   width: 100%;
   // max-width:270px;
   // height:40vh;
-  height: auto;
-  max-height:40vh
+  height: 40vw;
+  // max-height:40vh
   // minimum-height:38vh
+  object-fit: cover;
 }
 
+
 // カード説明部分
-.card-text{
+.card-text,{
   display: flex;
+  width: 100%;
   justify-content: space-between;
 }
-// ここまで
+
+// .new-comment, .comments, {
+//   width: 100%;
+//   overflow-wrap: normal;
+// }
+
+.comment{
+  width: 100%;
+  overflow-wrap: normal;
+  border-bottom: 1px solid #333;
+  padding: 5px;
+}
+.coment-footer{
+display: flex;
+justify-content: flex-end;
+}
+
+// 投稿一覧ここまで
+
 
 // .u-image{
 //   width: 30px;

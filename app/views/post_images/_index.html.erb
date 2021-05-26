@@ -1,7 +1,7 @@
 <div class = "row">
   <!--<div class = "card-deck">-->
     <% post_images.each do |post_image| %>
-      <div class = "col-lg-4">
+      <div class = "col-lg-6 col-sm-12">
         <div class = "card my-3">
 
           <div class = "card-header">
@@ -36,7 +36,7 @@
               <% post_image.pictures.each do |image| %>
               <%= link_to post_image_path(post_image.id) do %>
                   <!--< %= attachment_image_tag post_image, :image, :fill, 328, 280 %>-->
-                  <div class= "b"><%= attachment_image_tag image, :image, class:"m-image" %></div>
+                  <div class= "b"><%= attachment_image_tag image, :image %></div>
                 <% end %>
               <% end %>
             </div>

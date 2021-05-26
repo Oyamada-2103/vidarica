@@ -23,7 +23,7 @@ class PostImagesController < ApplicationController
     @tag_list = Tag.all
     # @post_images = PostImage.all
     # ページ機能の追加
-    @post_images = PostImage.order(" id DESC ").page(params[:page]).per(9)
+    @post_images = PostImage.order(" id DESC ").page(params[:page]).per(4)
   end
 
   def show
@@ -64,7 +64,7 @@ class PostImagesController < ApplicationController
     @tag_list = Tag.all
     @tag = Tag.find(params[:tag_id])
     # @post_images = @tag.post_images.all
-    @post_images =@posts = @tag.post_images.page(params[:page]).reverse_order
+    @post_images = @posts = @tag.post_images.page(params[:page]).reverse_order
   end
 
   private
