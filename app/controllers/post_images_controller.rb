@@ -12,8 +12,9 @@ class PostImagesController < ApplicationController
 
     if @post_image.save
       @post_image.save_tag(tag_list)
-      redirect_to post_images_path
+      redirect_to post_images_path, success: '投稿が完了しました'
     else
+      flash.now[:danger] = '投稿が失敗しました'
       render :new
     end
   end
@@ -37,8 +38,9 @@ class PostImagesController < ApplicationController
   def destroy
     @post_image = PostImage.find(params[:id])
     if @post_image.destroy
-      redirect_to post_images_path
+      redirect_to post_images_path, success: '投稿を削除しました'
     else
+      flash.now[:danger] = '投稿が削除できませんでした'
       render :show
     end
   end
@@ -53,8 +55,9 @@ class PostImagesController < ApplicationController
     tag_list = params[:post_image][:tag_name].split('・')
     if post_image.update(post_image_params)
       post_image.save_tag(tag_list)
-      redirect_to post_image_path(post_image)
+      redirect_to post_image_path(post_image), success: '投稿を編集しました'
     else
+      flash.now[:danger] = '投稿が編集できませんでした'
       render :edit
     end
   end

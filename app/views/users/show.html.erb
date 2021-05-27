@@ -1,43 +1,46 @@
-<h1>マイページ</h1>
+<div class ="container">
 <!--ユーザー情報-->
 <div class="row">
-  <div class="col-lg-4">
+<div class="user-info">
+  <div class ="u-icon">
     <!--投稿者画像-->
-    <%= attachment_image_tag(@user,:image, :fill, 300, 300, fallback: 'no_img.jpg') %>
+    <%= attachment_image_tag(@user,:image, :fill, 200, 200, fallback: 'no_img.jpg', size:'200x200') %>
   </div>
-  <div class="col-lg-6">
-    ユーザー名:
-    <%= @user.user_name %>
-    <br>
-    自己紹介
-    <%= @user.introduction %>
-  </div>
-  <%= link_to "アカウント削除", user_path(@user), method: :delete %>
-</div>
-
-<div class="row">
-  <% if @user == current_user %>
-    <%= link_to "編集", edit_user_path(current_user) %>
-  <% end %>
-</div>
-
-
-<!-- follow機能 -->
-<div>
-  <% if current_user != @user %>
-    <% if @user.followed_by?(current_user) %>
-      <p><%=link_to "フォロー済み", user_relationship_path(@user.id), method: :delete %></p>
-    <% else %>
-      <p><%=link_to "フォローする", user_relationships_path(@user.id), method: :post %></p>
+  <div class="u-detail">
+    <div class ="u-introduse">
+      ユーザー名:
+      <%= @user.user_name %>
+      <br>
+      自己紹介
+      <p class="u-introduction"><%= @user.introduction %>
+    </div>
+    <div class ="u-link">
+      <div class="item">
+      <!-- follow機能 -->
+        <% if current_user != @user %>
+          <% if @user.followed_by?(current_user) %>
+            <%=link_to "フォロー済み", user_relationship_path(@user.id), method: :delete %>
+          <% else %>
+            <%=link_to "フォローする", user_relationships_path(@user.id), method: :post %>
+          <% end %>
+        <% end %>
+      </div>
+      <div class="item"><%= link_to "follows", follows_user_path(@user.id)%></div>
+      <div class="item"><%= link_to "followers", followers_user_path(@user.id)%></div>
+    </div>
+    <div class="u-link">
+      <% if @user == current_user %>
+        <div class="item"><%= link_to "アカウント編集", edit_user_path(current_user) %></div>
+        <div class="item"><%= link_to "アカウント削除", user_path(@user), method: :delete , data: { confirm: "削除した情報は戻りませんが本当に削除しますか？" }%></div>
       <% end %>
-  <% end %>
-  <%= link_to "follows", follows_user_path(@user.id)%>
-  <%= link_to "followers", followers_user_path(@user.id)%>
-
+    </div>
+    <div class="u-follow">
+    </div>
+  </div>
 </div>
-
-<P>-----------ここまでユーザー情報-------------</P>
-<P>-----------ここから投稿一覧-------------</P>
+</div>
 
 <!--ユーザー投稿一覧-->
 <%= render partial: "users/post_images", locals: { post_images: @post_images } %>
+
+</div>

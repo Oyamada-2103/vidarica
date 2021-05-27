@@ -11,8 +11,9 @@ class UsersController < ApplicationController
   def update
     user = User.find(params[:id])
     if user.update(user_params)
-      redirect_to user_path(user.id)
+      redirect_to user_path(user.id), success: '登録情報を編集しました'
     else
+      flash.now[:danger] = '登録情報の編集ができませんでした'
       render :edit
     end
   end
@@ -20,8 +21,9 @@ class UsersController < ApplicationController
   def destroy
     user = User.find(params[:id])
     if user.destroy
-      redirect_to post_images_path
+      redirect_to root_path, success: 'アカウントを削除しました'
     else
+      flash.now[:danger] = 'アカウントの削除ができませんでした'
       render :show
     end
   end
@@ -41,6 +43,7 @@ class UsersController < ApplicationController
 
   def user_params
     params.require(:user).permit(:image, :user_name, :introduction)
+    # params.require(:user).permit(:user_name, :introduction)
   end
 
 end

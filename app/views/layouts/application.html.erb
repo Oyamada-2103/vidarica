@@ -29,11 +29,10 @@
         </div>
       </div>
     </nav>
-
-    <!--<div class = "container">-->
-      <%= yield %>
-    <!--</div>-->
-
+  <!--メイン部分-->
+    <%= render 'shared/flash_message'%>  
+    <%= yield %>
+  <!--footer部分-->
     <div class="footer">
       <div class="container">
         <div class ="row">
