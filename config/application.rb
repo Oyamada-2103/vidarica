@@ -15,5 +15,11 @@ module Vidarica
     # Application configuration can go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded after loading
     # the framework and any gems in your application.
+    
+    # I18n.config.available_locales = :ja
+    # config.i18n.default_locale = :ja　#追加(言語対応)
+    # config.i18n.load_path += Dir[Rails.root.join('config', 'locales', '**', '*.{rb,yml}').to_s]
+
+    config.time_zone = 'Asia/Tokyo' #追加(日本時間対応)
   end
 end

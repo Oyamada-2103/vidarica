@@ -7,6 +7,13 @@ username:~/environment $ ssh -i ~/.ssh/practice-aws.pem ec2-user@18.178.129.197
 Enter password:
 -h 以降がRDSのエンドポイント
 
+デプロイ時
+[ec2-user@ip-172-31-3-132 vidarica]$ git pull origin main
+[ec2-user@ip-172-31-3-132 vidarica]$  bundle install --path vendor/bundle --without test development
+[ec2-user@ip-172-31-3-132 vidarica]$ bundle exec rails db:migrate RAILS_ENV=production
+上からデータのpull、バンドルインストール、migrateしてから$ rails s -e productionで公開
+
+
 rails g controller homes
 
 

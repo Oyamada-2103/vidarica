@@ -1,0 +1,51 @@
+<div class = "container">
+<div class = "row">
+
+  <table class="table table-bordered">
+    <thead>
+      <tr>
+        <th colspan="2">タグ一覧</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <th scope="row">Scene</th>
+        <td>
+          <% @tag_list.each do |list| %>
+            <% if list.genre.id == 2 %>
+              <%= link_to list.tag_name, tag_post_images_path(tag_id: list.id) %>
+              <%= "(#{list.post_tags.count})"%>
+              <%= "　"%>
+            <% end %>
+          <% end %>
+        </td>
+      </tr>
+      <tr>
+        <th scope="row">Purpose</th>
+        <td>
+          <% @tag_list.each do |list| %>
+            <% if list.genre.id == 3 %>
+              <%= link_to list.tag_name, tag_post_images_path(tag_id: list.id) %>
+              <%= "(#{list.post_tags.count})"%>
+              <%= "　"%>
+            <% end %>
+          <% end %>
+        </td>
+      </tr>
+      <tr>
+        <th scope="row">Users make</th>
+        <td>
+          <% @tag_list.each do |list| %>
+            <% if list.genre.id == 1 %>
+              <%= link_to list.tag_name, tag_post_images_path(tag_id: list.id) %>
+              <%= "(#{list.post_tags.count})"%>
+              <%= "　"%>
+            <% end %>
+          <% end %>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  
+</div>
+</div>

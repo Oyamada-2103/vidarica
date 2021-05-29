@@ -1,6 +1,5 @@
 Rails.application.routes.draw do
 
-
   root to: 'homes#top'
 
   devise_for :users
@@ -16,14 +15,12 @@ Rails.application.routes.draw do
       get :follows, on: :member
       get :followers, on: :member
   end
-  # get "users/:id/likes" => "users#likes"
-
+  
 
   #タグによって絞り込んだ投稿を表示するアクションへのルーティング
-  resources :tags do
+  resources :tags, only: [:index,] do
     get 'post_images', to: 'post_images#search'
   end
-
 
   # 管理者用サイトのrouting
   devise_scope :admins do
