@@ -1,10 +1,11 @@
 class Admin::TagsController < ApplicationController
+  # ログインの確認
+  before_action :authenticate_admin!
 
   def index
     @tag = Tag.new
     @tags = Tag.all
     @genres = Genre.all
-    # @tag_find = Tag.find(params[:id])
   end
 
   def create

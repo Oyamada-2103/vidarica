@@ -1,3 +1,4 @@
+<div class = "container">
 <div class ="row">
   <h5>Scene：</h5>
   <% @tag_list.each do |list| %>
@@ -18,10 +19,13 @@
     <% end %>
   <% end %>
 </div>
+
 <div class ="row">
-  <%= link_to "タグ一覧", root_path %>
+  <%= link_to "タグ一覧", tags_path %>
 </div>
 <br>
 <!--インデックス部分をテンプレート化していれる-->
 <%= render partial: "post_images/index", locals: { post_images: @post_images } %>
+</div>
+
 

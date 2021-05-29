@@ -1,10 +1,12 @@
-<% @users.each do |user| %>
-  <%= user.user_name %>
-    <% if current_user != user %>
-      <% if user.followed_by?(current_user) %>
-        <p><%=link_to "フォロー済み", user_relationships_path(user.id), method: :delete %></p>
-      <% else %>
-        <p><%=link_to "フォローする", user_relationships_path(user.id), method: :post %></p>
-      <% end %>
-    <% end %>
-<% end %>
+<div class="container">
+  <div class="row">
+    <p><%= @user.user_name %>さんがフォローしているユーザー一覧</p>
+  </div>
+
+  <div class="row">
+  <% @users.each do |user| %>
+    <%= render partial: "users/user_info", locals: { user: user } %>
+  <% end %>
+  </div>
+
+</div>

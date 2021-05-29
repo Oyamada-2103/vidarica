@@ -7,20 +7,16 @@ class ApplicationController < ActionController::Base
 
   def after_sign_in_path_for(resource)
     if user_signed_in?
-      flash[:alert] = "ログインに成功しました"
       post_images_path
     elsif admin_signed_in?
-      flash[:notice] = "管理者ログインに成功しました"
       admin_tags_path
     else
-      flash[:danger] = "ログインに失敗しました"
-
+      root_path
     end
   end
 
 
   def configure_permitted_parameters
     devise_parameter_sanitizer.permit(:sign_up, keys: [:account_name,:user_name,:gender,:birth_year])
-
   end
 end
