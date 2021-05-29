@@ -1,7 +1,11 @@
 class UsersController < ApplicationController
+  
+  before_action :authenticate_user!
+  before_action :ensure_correct_user, only: [:edit, :update, :destroy]
+  
   def show
     @user = User.find(params[:id])
-    @post_images = @user.post_images.order(" id DESC ").page(params[:page]).per(9)
+    @post_images = @user.post_images.order(" id DESC ").page(params[:page]).per(4)
   end
 
   def edit
@@ -43,7 +47,13 @@ class UsersController < ApplicationController
 
   def user_params
     params.require(:user).permit(:image, :user_name, :introduction)
-    # params.require(:user).permit(:user_name, :introduction)
   end
-
+    
+  def ensure_correct_user
+    @user = User.find(params[:id])
+    unless @user == current_user
+      redirect_to post_images_path, danger: '権限がありません'
+    end
+  end
+  
 end

@@ -1,4 +1,7 @@
 class PostImagesController < ApplicationController
+  # ログインの確認とユーザー機能の制限
+  before_action :authenticate_user!
+  before_action :ensure_correct_user, only: [:edit, :update, :destroy]
 
   def new
     @post_image = PostImage.new
@@ -74,6 +77,13 @@ class PostImagesController < ApplicationController
 
   def post_image_params
     params.require(:post_image).permit(:caption, pictures_images: [])
+  end
+
+  def ensure_correct_user
+    @post_image = PostImage.find(params[:id])
+    unless @post_image.user == current_user
+      redirect_to post_images_path, danger: '権限がありません'
+    end
   end
 
 end

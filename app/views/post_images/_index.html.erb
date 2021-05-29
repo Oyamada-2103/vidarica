@@ -2,7 +2,7 @@
   <% post_images.each do |post_image| %>
   <div class = "col-lg-6 col-sm-12">
   <div class = "card my-3">
-      
+
       <!--cardheaderユーザー名・アイコン、フォロー機能-->
         <div class = "card-header">
           <div class = "u-info">
@@ -21,7 +21,7 @@
             <% end %>
           </div>
         </div>
-        
+
       <!--メイン画像-->
         <div class ="slick-pic">
           <% post_image.pictures.each do |image| %>
@@ -30,13 +30,13 @@
             <% end %>
           <% end %>
         </div>
-      
+
       <!--画像説明、コメント部分-->
         <div class ="card-body">
           <%= post_image.caption.truncate(15) %>
           <%= link_to " 全て表示する", post_image_path(post_image.id) %>
           <div class = "card-text">
-            投稿日<%= post_image.created_at.strftime('%Y/%m/%d') %>
+            投稿日：<%= post_image.created_at.strftime('%Y/%m/%d %H:%M') %>
             <%= link_to "#{post_image.post_comments.count} コメント", post_image_path(post_image.id) %>
           </div>
         </div>
