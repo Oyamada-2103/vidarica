@@ -24,6 +24,9 @@ vida rica:スペイン語で「豊かな暮らし」の意
 自分の持っているアイデアを広めたい
 アイデアを探したい
 
+### チャレンジ要素一覧
+https://docs.google.com/spreadsheets/d/1hPWCMpCAJ4OMZao3fex1oagv7xYV7Ga3TxVEGjcFJdw/edit#gid=0
+
 <!--##(参考)画面遷移図・ワイヤーフレーム-->
 <!--https://docs.google.com/presentation/d/1UR4iBTKEXL7ECETRBMLG3tBmSLLtvioobxeq9-sx0yQ/edit?usp=sharing-->
 

@@ -11,7 +11,9 @@ Enter password:
 [ec2-user@ip-172-31-3-132 vidarica]$ git pull origin main
 [ec2-user@ip-172-31-3-132 vidarica]$  bundle install --path vendor/bundle --without test development
 [ec2-user@ip-172-31-3-132 vidarica]$ bundle exec rails db:migrate RAILS_ENV=production
-上からデータのpull、バンドルインストール、migrateしてから$ rails s -e productionで公開
+                                     bundle exec rails db:seed RAILS_ENV=production
+                                     bundle exec rails assets:precompile RAILS_ENV=production
+上からデータのpull、バンドルインストール、migrate、seed、してから$ rails s -e productionで公開
 
 
 rails g controller homes
