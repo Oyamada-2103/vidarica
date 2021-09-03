@@ -17,7 +17,7 @@ class PostCommentsController < ApplicationController
     if PostComment.find_by(id: params[:id], post_image_id: params[:post_image_id]).destroy
       redirect_to post_image_path(params[:post_image_id]), success: 'コメントを削除しました'
     else
-      flash.now[:danger] = 'コメント削除てきませんでした'
+      flash.now[:danger] = 'コメントの削除に失敗しました'
       render 'post_images/show'
     end
   end
